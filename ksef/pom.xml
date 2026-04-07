@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>pl.mentelm.autoinvoice</groupId>
+        <artifactId>parent</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>ksef</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.mentelm.autoinvoice</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>4.1.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+<!--                    <xjbSources>-->
+<!--                        <xjbSource>src/main/resources/global.xjb</xjbSource>-->
+<!--                    </xjbSources>-->
+                    <sources>
+                        <source>${project.basedir}/schemat.xsd</source>
+                    </sources>
+                    <outputDirectory>${build.directory}/generated-sources/java</outputDirectory>
+                    <clearOutputDir>false</clearOutputDir>
+                    <laxSchemaValidation>true</laxSchemaValidation>
+                    <encoding>UTF-8</encoding>
+                    <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+                    <noPackageLevelAnnotations>true</noPackageLevelAnnotations>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
