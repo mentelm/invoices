@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>pl.mentelm.autoinvoice</groupId>
+        <artifactId>parent</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>toggl</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.mentelm.autoinvoice</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>7.20.0</version>
+                <configuration>
+
+                    <generatorName>spring</generatorName>
+                    <generateSupportingFiles>false</generateSupportingFiles>
+                    <configOptions>
+                        <interfaceOnly>true</interfaceOnly>
+                        <skipDefaultInterface>true</skipDefaultInterface>
+                        <useSpringBoot4>true</useSpringBoot4>
+                        <useJackson3>true</useJackson3>
+                        <reactive>true</reactive>
+                        <openApiNullable>false</openApiNullable>
+                        <library>spring-http-interface</library>
+
+                        <useTags>true</useTags>
+                        <useOptional>true</useOptional>
+                        <useResponseEntity>false</useResponseEntity>
+                        <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                        <useLombokAnnotations>true</useLombokAnnotations>
+
+                        <documentationProvider>none</documentationProvider>
+                    </configOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>toggl-api-generation</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/toggl.api.json</inputSpec>
+                            <apiPackage>pl.mentelm.autoinvoice.toggl.openapi</apiPackage>
+                            <modelPackage>pl.mentelm.autoinvoice.toggl.openapi</modelPackage>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

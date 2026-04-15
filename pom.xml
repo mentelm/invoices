@@ -13,6 +13,7 @@
         <module>app</module>
         <module>domain</module>
         <module>fakturownia</module>
+        <module>toggl</module>
     </modules>
 
     <properties>
@@ -45,6 +46,11 @@
             <dependency>
                 <groupId>pl.mentelm.autoinvoice</groupId>
                 <artifactId>fakturownia</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>pl.mentelm.autoinvoice</groupId>
+                <artifactId>toggl</artifactId>
                 <version>${revision}</version>
             </dependency>
 
