@@ -39,6 +39,7 @@ class TogglClient implements GetTimeEntries {
                         Optional.empty(),
                         Optional.empty()
                 )
+//                .log()
                 .collectMultimap(
                         TogglClient::extractTaskName,
                         Function.identity()

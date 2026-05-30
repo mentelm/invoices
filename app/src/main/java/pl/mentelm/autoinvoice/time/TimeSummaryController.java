@@ -25,11 +25,13 @@ class TimeSummaryController {
     )
     Flux<TimeEntrySummary> getTimeSummary(@PathVariable String yearMonth) {
         return getTimeEntries.summarizeEntries(YearMonth.parse(yearMonth))
+                .log()
                 .flatMap(this::overideDescriptionWithJiraCode);
     }
 
     private Mono<TimeEntrySummary> overideDescriptionWithJiraCode(TimeEntrySummary summary) {
         return jiraIssueCodeExtractor.extractTaskCode(summary.description())
-                .map(code -> new TimeEntrySummary(code, summary.dailyDurations()));
+                .map(code -> new TimeEntrySummary(code, summary.dailyDurations()))
+                .defaultIfEmpty(summary);
     }
 }

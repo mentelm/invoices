@@ -1,0 +1,7 @@
+toggl:
+  baseUrl: https://focus.toggl.com/api
+  api-token: toggl_sk_96e65447e82b6c2f9d1f8aa535bc18e7
+  organization-id: 6414950
+  workspace-id: 6442663
+
+default-jira-project-key: MNTLM

@@ -11,5 +11,4 @@ class TogglProperties {
     private String baseUrl;
     private Integer organizationId;
     private Integer workspaceId;
-    private String defaultJiraProjectCode;
 }
