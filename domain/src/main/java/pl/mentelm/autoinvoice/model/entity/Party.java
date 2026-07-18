@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.Set;
 
 @Getter
-public abstract class Entity {
+public abstract class Party {
 
     Address address;
     Set<TaxId> taxIds;

@@ -2,7 +2,7 @@ package pl.mentelm.autoinvoice.model;
 
 import lombok.Builder;
 import lombok.Value;
-import pl.mentelm.autoinvoice.model.entity.Entity;
+import pl.mentelm.autoinvoice.model.entity.Party;
 import pl.mentelm.autoinvoice.model.money.Payment;
 import pl.mentelm.autoinvoice.model.position.InvoicePosition;
 
@@ -18,9 +18,9 @@ public class Invoice {
     UUID id;
     InvoiceId invoiceId;
 
-    Entity issuer;
-    Entity recipient;
-    Optional<Entity> payer;
+    Party issuer;
+    Party recipient;
+    Optional<Party> payer;
 
     LocalDate issueDate;
     LocalDate serviceExecutionDate;
